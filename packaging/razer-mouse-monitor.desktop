@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Razer Mouse Monitor
+Comment=Show Razer mouse battery, pointer speed, and Linux backend status
+Exec=razer-mouse-monitor
+Terminal=false
+Icon=razer-mouse-monitor
+Categories=Utility;Settings;HardwareSettings;Qt;
