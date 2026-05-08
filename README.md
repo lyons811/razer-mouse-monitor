@@ -38,6 +38,8 @@ To make the app show up from KDE Alt+Space / KRunner:
 ./scripts/install-desktop-entry.sh
 ```
 
+The installer copies the AppImage to `~/AppImages/` and points the launcher there, so you can delete the source checkout afterward.
+
 Then search for `razer`, `razor`, `mouse`, `battery`, or `dpi`.
 
 ## Required permission rule

@@ -5,14 +5,20 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP=razer-mouse-monitor
 APPIMAGE="$ROOT/dist/Razer_Mouse_Monitor-x86_64.AppImage"
 BINARY="$ROOT/build/razer-mouse-monitor"
+PERMANENT_APP_DIR="$HOME/AppImages"
+PERMANENT_APPIMAGE="$PERMANENT_APP_DIR/Razer_Mouse_Monitor-x86_64.AppImage"
 DESKTOP_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/applications"
 ICON_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/icons/hicolor"
 DESKTOP_FILE="$DESKTOP_DIR/$APP.desktop"
 
-mkdir -p "$DESKTOP_DIR"
+mkdir -p "$DESKTOP_DIR" "$PERMANENT_APP_DIR"
 
 if [[ -x "$APPIMAGE" ]]; then
-  EXEC="$APPIMAGE"
+  cp -f "$APPIMAGE" "$PERMANENT_APPIMAGE"
+  chmod +x "$PERMANENT_APPIMAGE"
+  EXEC="$PERMANENT_APPIMAGE"
+elif [[ -x "$PERMANENT_APPIMAGE" ]]; then
+  EXEC="$PERMANENT_APPIMAGE"
 elif [[ -x "$BINARY" ]]; then
   EXEC="$BINARY"
 else
@@ -52,4 +58,5 @@ elif command -v kbuildsycoca5 >/dev/null 2>&1; then
 fi
 
 echo "Installed desktop entry: $DESKTOP_FILE"
+echo "Launcher target: $EXEC"
 echo "KRunner should find it with: razer, razor, mouse, battery, dpi"
