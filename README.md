@@ -30,6 +30,16 @@ chmod +x Razer_Mouse_Monitor-x86_64.AppImage
 ./Razer_Mouse_Monitor-x86_64.AppImage
 ```
 
+## Add to app launcher / KRunner
+
+To make the app show up from KDE Alt+Space / KRunner:
+
+```bash
+./scripts/install-desktop-entry.sh
+```
+
+Then search for `razer`, `razor`, `mouse`, `battery`, or `dpi`.
+
 ## Required permission rule
 
 Fedora usually makes `/dev/hidraw*` devices root-only. Battery/DPI telemetry needs access to the Razer receiver's hidraw node.
